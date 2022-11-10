@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, SafeAreaView , Share, ScrollView, Button
 import { Card, CardTitle, CardContent} from 'react-native-material-cards';
 import BarChart from 'react-native-bar-chart';
 import {Camera} from 'expo-camera';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import Share from 'react-native-share';
 
 
@@ -12,8 +13,9 @@ const Profile = (props) => {
   const[userName,setUserName] = useState("")
   const[cameraPermission, setCameraPermission] = useState(false)
   const[profilePhoto, setprofilePhoto] = useState(null)
-  const cameraRef = useRef(null)
-};
+  const cameraRef = useRef(null) 
+}
+
   useEffect(()=>{
     const getUserName = async()=>{
       const camera = await Camera.requestCameraPermissionsAsync();
@@ -23,12 +25,7 @@ const Profile = (props) => {
     getUserName();
   },[]);
 
-
-// ];
-// labels
-// const horizontalData = ['S', 'M', 'T', 'W', 'T', 'F','S'];
-
-const Profile = (props) => {
+{
   const myCustomerShare = async() =>{
     const shareOptions = {
       message: 'This is a test'
