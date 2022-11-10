@@ -1,20 +1,28 @@
 
-import React from 'react';
+import React, { useEffect,useState,useRef } from 'react';
 import { StyleSheet, Text, View, Image, SafeAreaView , Share, ScrollView, Button} from 'react-native';
 import { Card, CardTitle, CardContent} from 'react-native-material-cards';
 import BarChart from 'react-native-bar-chart';
+import {Camera} from 'expo-camera';
 // import Share from 'react-native-share';
 
 
 
-// const data = [
-//   [70, 0],
-//   [80,0],
-//   [110, 0],
-//   [100, 0],
-//   [280, 0],
-//   [80,0 ],
-//   [110, 0]
+const Profile = (props) => {
+  const[userName,setUserName] = useState("")
+  const[cameraPermission, setCameraPermission] = useState(false)
+  const[profilePhoto, setprofilePhoto] = useState(null)
+  const cameraRef = useRef(null)
+};
+  useEffect(()=>{
+    const getUserName = async()=>{
+      const camera = await Camera.requestCameraPermissionsAsync();
+      const userName = await AsyncStorage.getItem('userName');
+      setUserName(userName);
+    };
+    getUserName();
+  },[]);
+
 
 // ];
 // labels
@@ -48,7 +56,7 @@ elevation: 4}}>
      <CardContent>
      <Image style={{height: 100, width:100, borderRadius: 75}}
       source={require('../image/me.jpg')} />
-    <Text style={{marginTop:10,marginBottom:10,fontWeight: 'bold'}}>Sarah Romero</Text>
+    <Text style={{marginTop:10,marginBottom:10,fontWeight: 'bold'}}>{userName}</Text>
 
     <Text style={{marginTop:20,marginBottom:2}}>This Week's progress</Text>
 {/* <BarChart barColor='green' data={data} horizontalData={horizontalData} /> */}
@@ -58,6 +66,7 @@ elevation: 4}}>
     </CardContent>
     </Card>
  </SafeAreaView>
+
   );
 };
 export default Profile;
