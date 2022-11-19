@@ -18,7 +18,7 @@ const Home = (props) => {
 
 //today score
 const todayScore = async() =>{
-  const sessionToken =await AsyncStorage.getItem('sessionToken')
+  const loginToken = AsyncStorage.getItem('sessionToken')
   let scoreObject ={};
   try{
 

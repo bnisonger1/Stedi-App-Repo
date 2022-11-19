@@ -25,7 +25,7 @@ const App = () =>{
       const sessionToken = await AsyncStorage.getItem('sessionToken');
       console.log('token from storage', sessionToken);
     
-    const validateResponse = await fetch('https://dev.stedi.me/validate/'+sessionToken)
+    const validateResponse = await fetch('https://dev.stedi.me/validate/' +sessionToken)
 
     if(validateResponse.status == 200){
       const userEmail = await validateResponse.text();
@@ -33,9 +33,10 @@ const App = () =>{
       console.log('userEmail', userEmail);
       setIsLoggedIn(true);
     }
-    }
-    getSessionToken();
-  },[])
+
+  }
+  getSessionToken();
+},[])
   
 
 
@@ -71,10 +72,11 @@ return(
               'content-type' : 'application/text'
               }
             }
-            )
+          )
           if (sendTextResponse.status!=200){
             Alert('Error', 'Server responded to send text with status: '+sendTextResponse.status);
           }
+          console.log("responseStatus", textResponse.status)
          }}
         />
 
