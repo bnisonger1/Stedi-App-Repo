@@ -19,7 +19,7 @@ const Profile = (props) => {
   const[profilePhoto, setprofilePhoto] = useState(null)
   const cameraRef = useRef(null);
   const [cameraReady, setCameraReady] = useState(false);
-}
+
 
   useEffect(()=>{
     const getUserName = async()=>{
@@ -46,7 +46,7 @@ const Profile = (props) => {
   console.log('Error', error)
       }
     }
-    
+ 
     if (profilePhoto==null){
       return(
         <View style={styles.container}> 
@@ -57,7 +57,7 @@ const Profile = (props) => {
                 const picture = await cameraRef.current.takePictureAsync(cameraOptions);                          
                 console.log('Picture', picture);                          
                 await AsyncStorage.setItem('profilePhoto', picture.uri);                          
-                setProfilePhoto(picture.uri);                         
+                setprofilePhoto(picture.uri);                         
               }}>                           
                 <Text style={styles.text}>Take Picture</Text>                         
               </TouchableOpacity>: null }                           
@@ -66,7 +66,8 @@ const Profile = (props) => {
                                       
         </View>                         
       )                         
-    }                         
+    }   
+                     
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -94,7 +95,7 @@ elevation: 4}}>
  </SafeAreaView>
 
   );
-};
+}};
 export default Profile;
 const styles = StyleSheet.create({
   container:{
