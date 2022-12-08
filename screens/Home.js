@@ -24,7 +24,7 @@ const todayScore = async() =>{
 
 const userEmail = await AsyncStorage.getItem('userEmail');
   token.current = await AsyncStorage.getItem('sessionToken');
-    const scoreResponse = await fetch('https://dev.stedi.me/riskscore/', +userEmail,{
+    const scoreResponse = await fetch('https://dev.stedi.me/riskscore/'+userEmail,{
     method:'GET',
     headers:{
       'Content-Type': 'application/json',
@@ -37,6 +37,7 @@ const userEmail = await AsyncStorage.getItem('userEmail');
   console.log(scoreObject.score);
   }catch(error){
     console.log('error', error);
+    
    }
 }
 

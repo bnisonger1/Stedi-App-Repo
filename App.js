@@ -102,7 +102,7 @@ return(
               'content-type' : 'application/text'
               },
               body:JSON.stringify({
-                phoneNumber,
+                phoneNumber:phoneNumber,
                 oneTimePassword:tempCode
               })
             }
